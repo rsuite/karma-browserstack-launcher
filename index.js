@@ -26,13 +26,17 @@ var createBrowserStackTunnel = function (logger, config, emitter) {
     deferred.resolve()
   })
 
-  emitter.on('exit', function (done) {
+  const stopBrowserStackTunnel = (done) => {
     log.debug('Shutting down BrowserStackLocal')
     bsLocal.stop(function () {
       log.debug('Stopped BrowserStackLocal')
       done()
     })
-  })
+  }
+
+  emitter.on('exit', stopBrowserStackTunnel)
+  emitter.on('uncaughtException', stopBrowserStackTunnel)
+  emitter.on('unhandledRejection', stopBrowserStackTunnel)
 
   return deferred.promise
 }

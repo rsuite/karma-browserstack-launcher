@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/karma-runner/karma-browserstack-launcher.git"
+    "url": "git://github.com/rsuite/karma-browserstack-launcher.git"
   },
   "keywords": [
     "karma-plugin",
